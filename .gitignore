@@ -41,3 +41,4 @@ ServiceFabricBackup/
 .vscode
 
 vim.exe.stackdump
+/XenAdmin/RDP/AxMSTSCLib.dll
