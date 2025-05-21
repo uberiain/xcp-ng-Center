@@ -74,6 +74,10 @@ StyleCopReport.xml
 .pdb
 .cache
 .exe
+*.dll
+*.exe
+*.pdb
+*.cache
 *_i.c
 *_p.c
 *_h.h
