@@ -1,0 +1,9 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<Files Include="$(var.XenAdmin.TargetDir)\**" />
+		</ComponentGroup>
+	</Fragment>
+	
+	
+</Wix>

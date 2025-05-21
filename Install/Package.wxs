@@ -1,0 +1,31 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+	 xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui"
+	 xmlns:netfx="http://wixtoolset.org/schemas/v4/wxs/netfx">
+	<!--
+  <Package Name="XCP-ng Center" Manufacturer="XCP-ng" Version="0.0.0.$(var.VersionNumber)" UpgradeCode="c1744f26-3bf2-40b1-90c7-84e1289d659d">
+   -->
+	<Package Name="XCP-ng Center" Manufacturer="XCP-ng" Version="$(var.VersionNumber)" UpgradeCode="c1744f26-3bf2-40b1-90c7-84e1289d659d">
+	  <Icon Id="icon.ico" SourceFile="$(var.ProjectDir)\data\AppIcon.ico" />
+	  <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+
+	  <WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)\data\banner.bmp" />
+	  <WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)\data\background.bmp" />
+	  <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\data\license.rtf" />
+
+	  <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+	  <ui:WixUI Id="WixUI_InstallDir" />
+
+	  <PropertyRef Id="WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED"/>
+	  <Launch
+		Message="This application requires .NET Framework 4.8 or later."
+		Condition="Installed OR WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED"/>
+
+	  <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="!(loc.DowngradeError)" />
+	  <MediaTemplate EmbedCab="yes" />
+
+	  <Feature Id="ProductFeature" Title="SetupProject1" Level="1">
+		  <ComponentGroupRef Id="ProductComponents" />
+		  <ComponentRef Id="ApplicationShortcut" />
+	  </Feature>
+  </Package>
+</Wix>

@@ -1,0 +1,19 @@
+<Project>
+	<PropertyGroup>
+		<AssemblyTitle>$(Title)</AssemblyTitle>
+		<AssemblyDescription>$(Description)</AssemblyDescription>
+		<Copyright>Copyright © XCP-ng</Copyright>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/xcp-ng/xenadmin</RepositoryUrl>
+		<RevisionNumber>$([System.DateTime]::Now.ToString("yy"))$([System.DateTime]::Now.DayOfYear.ToString("D3"))</RevisionNumber>
+		<Authors>XCP-ng</Authors>
+		<Product>XCP-ng Center</Product>
+		<YearVer>$([System.DateTime]::Now.ToString("yy"))</YearVer>
+		<MonthVer>$([System.DateTime]::Now.Month.ToString("d2"))</MonthVer>
+		<PatchVer>0</PatchVer>
+		<Version>$(YearVer).$(MonthVer).$(PatchVer).$(RevisionNumber)</Version>
+		<FileVersion>$(YearVer).$(MonthVer).$(PatchVer).$(RevisionNumber)</FileVersion>
+		<Codename>Medicine Hat</Codename>
+		<Lab>xcpngcenter_main</Lab>
+	</PropertyGroup>
+</Project>

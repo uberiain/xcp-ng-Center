@@ -1,0 +1,36 @@
+﻿<Project>
+  <Import Project="Sdk.props" Sdk="WixToolset.Sdk" Version="6.0.0"  />
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Netfx.wixext" Version="6.0.0" />
+    <PackageReference Include="WixToolset.UI.wixext" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+	<ProjectReference Include="..\XenAdmin\XenAdmin.csproj" />
+  </ItemGroup>
+  <PropertyGroup>
+	<OutputName>XCP-ng Center</OutputName>
+  </PropertyGroup>
+	<Import Project="Sdk.targets" Sdk="WixToolset.Sdk" Version="6.0.0"/>
+	<Target Name="BeforeBuild">
+		<GetAssemblyIdentity AssemblyFiles="$(SolutionDir)XenAdmin\bin\$(Configuration)\net481\XCP-ng Center.exe">
+		  <Output TaskParameter="Assemblies" ItemName="AssemblyVersions" />
+		</GetAssemblyIdentity>
+		<!-- Create the WiX preprocessor variable $(var.VersionNumber) -->
+		<PropertyGroup>
+			<!--
+			<VersionNumber>$([System.Text.RegularExpressions.Regex]::Replace("%(AssemblyVersions.Version)", "^([^\.]+)\.([^\.]+)\.([^\.]+)\.(.*)$", "$4"))</VersionNumber>
+			-->
+			<VersionNumber>%(AssemblyVersions.Version)</VersionNumber>
+			<DefineConstants>VersionNumber=$(VersionNumber)</DefineConstants>
+		</PropertyGroup>
+		<CreateProperty Value="$(OutputName)-$(VersionNumber)-$(Platform)">
+			<Output TaskParameter="Value" PropertyName="TargetName" />
+		</CreateProperty>
+		<CreateProperty Value="$(TargetName)$(TargetExt)">
+			<Output TaskParameter="Value" PropertyName="TargetFileName" />
+		</CreateProperty>
+		<CreateProperty Value="$(TargetDir)$(TargetFileName)">
+			<Output TaskParameter="Value" PropertyName="TargetPath" />
+		</CreateProperty>
+	</Target>
+</Project>
