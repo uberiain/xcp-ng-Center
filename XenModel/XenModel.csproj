@@ -13,7 +13,7 @@
 		<PackageReference Include="DiscUtils.Wim" Version="0.16.13" />
 		<PackageReference Include="DiscUtils.Iso9660" Version="0.16.13" />
 		<PackageReference Include="lzfse-net" Version="1.0.15" />
-		<PackageReference Include="lzo.net" Version="0.0.3" />
+		<PackageReference Include="lzo.net" Version="0.0.6" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 	<ItemGroup>

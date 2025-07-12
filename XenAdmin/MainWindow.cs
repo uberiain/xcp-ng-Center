@@ -1381,6 +1381,10 @@ namespace XenAdmin
             if (!multi && !SearchMode && isRealVMSelected)
                 newTabs.Add(TabPageSnapshots);
 
+            /// ¿Quizas funciona?
+            if (!multi && !SearchMode && (isPoolSelected || isHostSelected && isHostLive))
+                newTabs.Add(TabPageAD);
+            
             foreach (var f in otherFeatures)
                 newTabs.Add(f.TabPage);
 
