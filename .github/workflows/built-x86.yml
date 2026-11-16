@@ -1,4 +1,4 @@
-name: Test Builds (x86)
+name: Build MSI (x86)
 
 on:
   workflow_dispatch:
