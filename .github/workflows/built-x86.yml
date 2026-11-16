@@ -19,7 +19,7 @@ jobs:
       - name: Install WiX
         run: dotnet tool install --global wix
       - name: Build WiX on Windows
-        run: msbuild Install\Install.wixproj
+        run: msbuild Install\Install.wixproj -property:Configuration=Release -property:Platform=x86
       - name: Upload Release Artifacts
         uses: actions/upload-artifact@v7
         with:
