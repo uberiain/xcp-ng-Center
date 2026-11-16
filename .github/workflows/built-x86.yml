@@ -27,7 +27,7 @@ jobs:
       - name: Build WiX on Windows
         run: msbuild Install\Install.wixproj -property:Configuration=Release -property:Platform=x86
       - name: Stage MSI
-        shell: push
+        shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path dist | Out-Null
           $msi = Get-ChildItem -Path Install -Recurse -Filter *.msi | Select-Object -First 1
