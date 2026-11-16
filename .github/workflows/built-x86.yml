@@ -20,8 +20,6 @@ jobs:
         run: msbuild XenAdmin.sln -t:restore -property:Platform=x86 -property:PlatformTarget=x86
       - name: Build Release solution (x86)
         run: msbuild XenAdmin.sln -property:Configuration=Release -property:Platform=x86 -property:PlatformTarget=x86
-      - name: Build Debug solution (x86)
-        run: msbuild XenAdmin.sln -property:Configuration=Debug -property:Platform=x86 -property:PlatformTarget=x86
       - name: Install WiX
         run: dotnet tool install --global wix
       - name: Build WiX on Windows
@@ -40,13 +38,3 @@ jobs:
         with:
           files: dist/*.msi
           generate_release_notes: true
-      - name: Upload Release Artifacts
-        uses: actions/upload-artifact@v7
-        with:
-          name: drop-release-x86
-          path: XenAdmin/bin/Release/net481
-      - name: Upload Debug Artifacts
-        uses: actions/upload-artifact@v7
-        with:
-          name: drop-debug-x86
-          path: XenAdmin/bin/Debug/net481
