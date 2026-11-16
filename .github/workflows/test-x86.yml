@@ -17,12 +17,12 @@ jobs:
       - name: Build Debug solution (x86)
         run: msbuild XenAdmin.sln -property:Configuration=Debug -property:Platform=x86 -property:PlatformTarget=x86
       - name: Upload Release Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: drop-release-x86
           path: XenAdmin/bin/Release/net481
       - name: Upload Debug Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: drop-debug-x86
           path: XenAdmin/bin/Debug/net481
