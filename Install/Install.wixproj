@@ -20,7 +20,10 @@
     <PropertyGroup>
       <!--
 			<VersionNumber>$([System.Text.RegularExpressions.Regex]::Replace("%(AssemblyVersions.Version)", "^([^\.]+)\.([^\.]+)\.([^\.]+)\.(.*)$", "$4"))</VersionNumber>
-			-->
+			 
+      <MyEnvVar Condition="'$(MyEnvVar)' == ''">$(GIT_BRANCH)</MyEnvVar>
+      <DefineConstants>MyEnvVar=$(MyEnvVar);$(DefineConstants)</DefineConstants>
+     -->
       <VersionNumber>%(AssemblyVersions.Version)</VersionNumber>
       <DefineConstants>VersionNumber=$(VersionNumber)</DefineConstants>
     </PropertyGroup>
