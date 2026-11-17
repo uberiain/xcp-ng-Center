@@ -4,6 +4,4 @@
 			<Files Include="$(var.XenAdmin.TargetDir)\**" />
 		</ComponentGroup>
 	</Fragment>
-	
-	
-</Wix>
+	</Wix>

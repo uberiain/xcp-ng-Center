@@ -13,20 +13,11 @@
   </PropertyGroup>
   <Import Project="Sdk.targets" Sdk="WixToolset.Sdk" Version="7.0.0" />
   <Target Name="BeforeBuild">
-    <!--
-    <GetAssemblyIdentity AssemblyFiles="$(SolutionDir)XenAdmin\bin\$(Configuration)\net481\XCP-ng Center.exe">
-    -->
     <GetAssemblyIdentity AssemblyFiles="$(MSBuildThisFileDirectory)..\XenAdmin\bin\$(Configuration)\net481\XCP-ng Center.exe">
       <Output TaskParameter="Assemblies" ItemName="AssemblyVersions" />
     </GetAssemblyIdentity>
     <!-- Create the WiX preprocessor variable $(var.VersionNumber) -->
     <PropertyGroup>
-      <!--
-			<VersionNumber>$([System.Text.RegularExpressions.Regex]::Replace("%(AssemblyVersions.Version)", "^([^\.]+)\.([^\.]+)\.([^\.]+)\.(.*)$", "$4"))</VersionNumber>
-			 
-      <MyEnvVar Condition="'$(MyEnvVar)' == ''">$(GIT_BRANCH)</MyEnvVar>
-      <DefineConstants>MyEnvVar=$(MyEnvVar);$(DefineConstants)</DefineConstants>
-     -->
       <VersionNumber>%(AssemblyVersions.Version)</VersionNumber>
       <DefineConstants>VersionNumber=$(VersionNumber)</DefineConstants>
     </PropertyGroup>
